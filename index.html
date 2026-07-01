@@ -145,14 +145,42 @@
             margin-top: 6px;
             opacity: 0.9;
         }
+        .spark-wrap:empty {
+            display: none;
+        }
         .sparkline {
             width: 84px;
             height: 22px;
-            filter: drop-shadow(0 0 4px rgba(110, 240, 214, 0.25));
+            filter: drop-shadow(0 0 4px rgba(110, 240, 214, 0.22));
+        }
+        .spark-baseline {
+            fill: none;
+            stroke: rgba(160, 205, 215, 0.22);
+            stroke-width: 1;
+        }
+        .spark-caption {
+            margin: 4px 0 0;
+            font-size: 0.74rem;
+            color: #8fb3bf;
+            letter-spacing: 0.2px;
+        }
+        .delta {
+            margin: 3px 0 0;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .delta.up {
+            color: #8cf2cc;
+        }
+        .delta.down {
+            color: #ff9f9f;
+        }
+        .delta.flat {
+            color: #9fd8f0;
         }
         .cta {
             display: inline-block;
-            margin-top: 12px;
+            margin-top: 10px;
             color: #032221;
             background: linear-gradient(180deg, #b9f5e9 0%, #7be6cf 100%);
             font-weight: 700;
@@ -205,7 +233,9 @@
                     </span>
                     <h2>Zendesk Rapport Juni 2026</h2>
                     <p class="meta">Zendesk ticket totaal: 2,316 | Returnless retouren: 152</p>
-                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline points="2.0,2.0 18.0,18.5 34.0,12.3 50.0,19.5 66.0,20.0 82.0,9.4" fill="none" stroke="#6ef0d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline class="spark-baseline" points="2,20 82,20"/><polyline points="2.0,2.0 18.0,18.5 34.0,12.3 50.0,19.5 66.0,20.0 82.0,9.4" fill="none" stroke="#7ef4cb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82.0" cy="9.4" r="1.9" fill="#7ef4cb"/></svg></span>
+                    <p class="spark-caption">Trend Zendesk laatste 6 maanden</p>
+                    <p class="delta up">vs vorige maand: +289 (+14.3%)</p>
                     <span class="cta">Open rapport &rarr;</span>
                     <span class="date">30/06/2026</span>
                 </a>
@@ -220,7 +250,9 @@
                     </span>
                     <h2>Zendesk Rapport Mei 2026</h2>
                     <p class="meta">Zendesk ticket totaal: 2,027 | Returnless retouren: 124</p>
-                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline points="2.0,2.0 22.0,18.5 42.0,12.3 62.0,19.5 82.0,20.0" fill="none" stroke="#6ef0d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline class="spark-baseline" points="2,20 82,20"/><polyline points="2.0,2.0 22.0,18.5 42.0,12.3 62.0,19.5 82.0,20.0" fill="none" stroke="#ff8f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82.0" cy="20.0" r="1.9" fill="#ff8f8f"/></svg></span>
+                    <p class="spark-caption">Trend Zendesk laatste 5 maanden</p>
+                    <p class="delta down">vs vorige maand: -13 (-0.6%)</p>
                     <span class="cta">Open rapport &rarr;</span>
                     <span class="date">31/05/2026</span>
                 </a>
@@ -235,7 +267,9 @@
                     </span>
                     <h2>Zendesk Rapport April 2026</h2>
                     <p class="meta">Zendesk ticket totaal: 2,040 | Returnless retouren: 118</p>
-                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline points="2.0,2.0 28.7,19.0 55.3,12.6 82.0,20.0" fill="none" stroke="#6ef0d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline class="spark-baseline" points="2,20 82,20"/><polyline points="2.0,2.0 28.7,19.0 55.3,12.6 82.0,20.0" fill="none" stroke="#ff8f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82.0" cy="20.0" r="1.9" fill="#ff8f8f"/></svg></span>
+                    <p class="spark-caption">Trend Zendesk laatste 4 maanden</p>
+                    <p class="delta down">vs vorige maand: -197 (-8.8%)</p>
                     <span class="cta">Open rapport &rarr;</span>
                     <span class="date">30/04/2026</span>
                 </a>
@@ -250,7 +284,9 @@
                     </span>
                     <h2>Zendesk Rapport Maart 2026</h2>
                     <p class="meta">Zendesk ticket totaal: 2,237 | Returnless retouren: 174</p>
-                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline points="2.0,2.0 42.0,20.0 82.0,13.2" fill="none" stroke="#6ef0d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline class="spark-baseline" points="2,20 82,20"/><polyline points="2.0,2.0 42.0,20.0 82.0,13.2" fill="none" stroke="#7ef4cb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82.0" cy="13.2" r="1.9" fill="#7ef4cb"/></svg></span>
+                    <p class="spark-caption">Trend Zendesk laatste 3 maanden</p>
+                    <p class="delta up">vs vorige maand: +170 (+8.2%)</p>
                     <span class="cta">Open rapport &rarr;</span>
                     <span class="date">31/03/2026</span>
                 </a>
@@ -265,7 +301,9 @@
                     </span>
                     <h2>Zendesk Rapport Februari 2026</h2>
                     <p class="meta">Zendesk ticket totaal: 2,067 | Returnless retouren: 143</p>
-                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline points="2.0,2.0 82.0,20.0" fill="none" stroke="#6ef0d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="spark-wrap"><svg class="sparkline" viewBox="0 0 84 22" aria-hidden="true"><polyline class="spark-baseline" points="2,20 82,20"/><polyline points="2.0,2.0 82.0,20.0" fill="none" stroke="#ff8f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82.0" cy="20.0" r="1.9" fill="#ff8f8f"/></svg></span>
+                    <p class="spark-caption">Trend Zendesk laatste 2 maanden</p>
+                    <p class="delta down">vs vorige maand: -452 (-17.9%)</p>
                     <span class="cta">Open rapport &rarr;</span>
                     <span class="date">28/02/2026</span>
                 </a>
@@ -281,6 +319,8 @@
                     <h2>Zendesk Rapport Januari 2026</h2>
                     <p class="meta">Zendesk ticket totaal: 2,519 | Returnless retouren: 133</p>
                     <span class="spark-wrap"></span>
+                    <p class="spark-caption">Trend Zendesk: onvoldoende data</p>
+                    <p class="delta flat">Geen vorige maand beschikbaar</p>
                     <span class="cta">Open rapport &rarr;</span>
                     <span class="date">31/01/2026</span>
                 </a>
