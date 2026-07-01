@@ -6,23 +6,23 @@
     <title>Zendesk & Returnless Rapporting</title>
     <style>
         :root {
-            --bg: #edf5f2;
-            --panel: #ffffff;
-            --text: #0f2d2f;
-            --muted: #4d6f6f;
-            --accent: #0e8a77;
-            --accent-strong: #0a5f59;
-            --line: #c7ddd8;
+            --bg: #07141d;
+            --panel: rgba(20, 40, 56, 0.78);
+            --text: #d5e8ee;
+            --muted: #9ec1cb;
+            --line: rgba(146, 188, 203, 0.35);
+            --accent: #74f3d5;
+            --accent-strong: #29c8a8;
         }
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+            font-family: "Segoe UI", Tahoma, sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at 12% 10%, #d4ece2 0%, transparent 42%),
-                radial-gradient(circle at 88% 78%, #cfe9e6 0%, transparent 36%),
-                linear-gradient(145deg, #edf5f2 0%, #e4f0eb 100%),
+                radial-gradient(circle at 12% 14%, rgba(74, 130, 150, 0.4) 0%, transparent 36%),
+                radial-gradient(circle at 90% 82%, rgba(52, 112, 144, 0.35) 0%, transparent 30%),
+                linear-gradient(160deg, #061019 0%, #0a1f2e 45%, #102a3b 100%),
                 var(--bg);
             min-height: 100vh;
             padding: 34px 20px;
@@ -30,25 +30,28 @@
         .shell {
             width: min(1040px, 100%);
             margin: 0 auto;
-            background: var(--panel);
+            background: linear-gradient(180deg, rgba(33, 57, 73, 0.72), rgba(16, 34, 49, 0.76));
             border-radius: 24px;
-            border: 1px solid #d3e4df;
-            box-shadow: 0 22px 44px rgba(17, 51, 54, 0.14);
+            border: 1px solid rgba(141, 191, 206, 0.32);
+            box-shadow: 0 26px 50px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
             overflow: hidden;
         }
         .hero {
             padding: 30px 28px 22px;
-            background: linear-gradient(160deg, #0f4d57 0%, #0d6866 48%, #168774 100%);
-            color: #effcf9;
+            background: linear-gradient(170deg, rgba(145, 220, 236, 0.3), rgba(51, 104, 126, 0.42));
+            border-bottom: 1px solid rgba(161, 212, 225, 0.32);
+            color: #dff5fb;
         }
         .hero h1 {
             margin: 0;
             font-size: clamp(1.7rem, 3vw, 2.5rem);
             letter-spacing: 0.2px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
         }
         .hero p {
             margin: 8px 0 0;
-            color: #d3f4ef;
+            color: #b7d6df;
         }
         .content {
             padding: 20px 22px 24px;
@@ -57,9 +60,14 @@
             margin: 0 0 18px;
             color: var(--muted);
             font-size: 0.98rem;
+            background: rgba(11, 31, 44, 0.48);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            display: inline-block;
+            padding: 7px 14px;
         }
         .stats strong {
-            color: var(--accent-strong);
+            color: #d8f7ff;
         }
         ul {
             list-style: none;
@@ -80,13 +88,14 @@
             border-radius: 14px;
             text-decoration: none;
             color: var(--text);
-            background: linear-gradient(180deg, #ffffff 0%, #f6fbfa 100%);
-            transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+            background: linear-gradient(180deg, rgba(48, 78, 98, 0.54), rgba(22, 43, 59, 0.6));
+            transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
         }
         .report-link:hover {
             transform: translateY(-2px);
-            border-color: #7cbeb4;
-            box-shadow: 0 12px 22px rgba(18, 86, 84, 0.13);
+            border-color: rgba(148, 240, 223, 0.85);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
+            background: linear-gradient(180deg, rgba(56, 93, 116, 0.66), rgba(26, 53, 71, 0.74));
         }
         .report-top {
             display: flex;
@@ -99,41 +108,62 @@
             display: inline-block;
             padding: 3px 10px;
             border-radius: 999px;
-            background: #dff4ee;
-            color: #0f6a5f;
+            background: rgba(152, 205, 220, 0.24);
+            color: #d9f5ff;
             font-size: 0.8rem;
             font-weight: 700;
-            border: 1px solid #b8e3d8;
+            border: 1px solid rgba(174, 231, 245, 0.32);
         }
         .recent {
             display: inline-block;
             padding: 3px 9px;
             border-radius: 999px;
-            background: #0f7d6f;
-            color: #eafffa;
+            background: rgba(81, 232, 202, 0.24);
+            color: #b9fff0;
             font-size: 0.74rem;
             font-weight: 700;
             letter-spacing: 0.2px;
+            border: 1px solid rgba(147, 245, 224, 0.35);
         }
         .report-link h2 {
             margin: 0;
             font-size: 1.05rem;
             line-height: 1.34;
-            min-height: 56px;
+            min-height: 46px;
+            color: #d7edf4;
+            text-wrap: balance;
+        }
+        .meta {
+            margin: 8px 0 0;
+            font-size: 0.94rem;
+            color: #9cc0cb;
+            min-height: 22px;
         }
         .cta {
             display: inline-block;
             margin-top: 12px;
-            color: var(--accent-strong);
+            color: #032221;
+            background: linear-gradient(180deg, #b9f5e9 0%, #7be6cf 100%);
             font-weight: 700;
-            font-size: 0.92rem;
+            font-size: 0.83rem;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(22, 80, 80, 0.34);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .date {
+            float: right;
+            margin-top: 16px;
+            color: #a3cad4;
+            font-size: 0.86rem;
         }
         .empty-state {
             border: 1px dashed var(--line);
             border-radius: 14px;
             padding: 16px;
             color: var(--muted);
-            background: #f8fcfb;
+            background: rgba(18, 42, 57, 0.6);
             grid-column: 1 / -1;
         }
         @media (max-width: 760px) {
@@ -163,7 +193,9 @@
                         <span class="recent">Meest recent</span>
                     </span>
                     <h2>Zendesk Rapport Juni 2026</h2>
+                    <p class="meta">Data sync: Complete | Tickets: 2,316</p>
                     <span class="cta">Open rapport &rarr;</span>
+                    <span class="date">30/06/2026</span>
                 </a>
             </li>
             
@@ -175,7 +207,9 @@
                         
                     </span>
                     <h2>Zendesk Rapport Mei 2026</h2>
+                    <p class="meta">Data sync: Complete | Tickets: 2,027</p>
                     <span class="cta">Open rapport &rarr;</span>
+                    <span class="date">31/05/2026</span>
                 </a>
             </li>
             
@@ -187,7 +221,9 @@
                         
                     </span>
                     <h2>Zendesk Rapport April 2026</h2>
+                    <p class="meta">Data sync: Complete | Tickets: 2,040</p>
                     <span class="cta">Open rapport &rarr;</span>
+                    <span class="date">30/04/2026</span>
                 </a>
             </li>
             
@@ -199,7 +235,9 @@
                         
                     </span>
                     <h2>Zendesk Rapport Maart 2026</h2>
+                    <p class="meta">Data sync: Complete | Tickets: 2,237</p>
                     <span class="cta">Open rapport &rarr;</span>
+                    <span class="date">31/03/2026</span>
                 </a>
             </li>
             
@@ -211,7 +249,9 @@
                         
                     </span>
                     <h2>Zendesk Rapport Februari 2026</h2>
+                    <p class="meta">Data sync: Complete | Tickets: 2,067</p>
                     <span class="cta">Open rapport &rarr;</span>
+                    <span class="date">28/02/2026</span>
                 </a>
             </li>
             
@@ -223,7 +263,9 @@
                         
                     </span>
                     <h2>Zendesk Rapport Januari 2026</h2>
+                    <p class="meta">Data sync: Complete | Tickets: 2,519</p>
                     <span class="cta">Open rapport &rarr;</span>
+                    <span class="date">31/01/2026</span>
                 </a>
             </li>
             
