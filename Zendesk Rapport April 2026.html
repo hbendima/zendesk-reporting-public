@@ -87,7 +87,172 @@
     .ptab:hover:not(.active) { background: #e5e7eb; color: #374151; }
     .month-tabs { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-bottom: 12px; }
   </style>
-</head>
+
+    <script>
+    (() => {
+        const KEY = "zr_pages_auth_ok_v1";
+        const EXPECTED_HASH = "6ac879af0727dd3c5ea4c42917c45b55c38b5dc4806827cfc167f6a491dac9a6";
+
+        if (sessionStorage.getItem(KEY) === "1") {
+            return;
+        }
+
+        const styles = `
+            html.auth-locked, html.auth-locked body {
+                overflow: hidden !important;
+            }
+            .auth-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 999999;
+                background: linear-gradient(160deg, rgba(5, 13, 22, 0.96), rgba(8, 25, 36, 0.96));
+                display: grid;
+                place-items: center;
+                padding: 20px;
+            }
+            .auth-card {
+                width: min(420px, 100%);
+                border-radius: 16px;
+                border: 1px solid rgba(141, 191, 206, 0.35);
+                background: linear-gradient(180deg, rgba(33, 57, 73, 0.95), rgba(16, 34, 49, 0.95));
+                color: #dff5fb;
+                padding: 18px;
+                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+                font-family: "Segoe UI", Tahoma, sans-serif;
+            }
+            .auth-card h2 {
+                margin: 0 0 6px;
+                font-size: 1.25rem;
+            }
+            .auth-card p {
+                margin: 0 0 14px;
+                color: #b8d6df;
+                font-size: 0.92rem;
+            }
+            .auth-row {
+                margin-bottom: 10px;
+            }
+            .auth-row label {
+                display: block;
+                margin-bottom: 5px;
+                font-size: 0.86rem;
+                color: #cfe8ef;
+            }
+            .auth-row input {
+                width: 100%;
+                border-radius: 10px;
+                border: 1px solid rgba(154, 211, 226, 0.35);
+                background: rgba(8, 24, 35, 0.78);
+                color: #e5f8ff;
+                padding: 10px 12px;
+                outline: none;
+            }
+            .auth-row input:focus {
+                border-color: rgba(125, 236, 212, 0.8);
+                box-shadow: 0 0 0 2px rgba(125, 236, 212, 0.2);
+            }
+            .auth-btn {
+                width: 100%;
+                border: 1px solid rgba(22, 80, 80, 0.34);
+                border-radius: 999px;
+                padding: 10px 12px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+                color: #032221;
+                background: linear-gradient(180deg, #b9f5e9 0%, #7be6cf 100%);
+                cursor: pointer;
+            }
+            .auth-error {
+                min-height: 18px;
+                margin-top: 8px;
+                color: #ff9f9f;
+                font-size: 0.84rem;
+            }
+        `;
+
+        const addStyles = () => {
+            const styleTag = document.createElement("style");
+            styleTag.setAttribute("data-pages-auth", "1");
+            styleTag.textContent = styles;
+            document.head.appendChild(styleTag);
+        };
+
+        const toHex = (buffer) =>
+            Array.from(new Uint8Array(buffer))
+                .map((byte) => byte.toString(16).padStart(2, "0"))
+                .join("");
+
+        const sha256 = async (text) => {
+            const encoded = new TextEncoder().encode(text);
+            const digest = await crypto.subtle.digest("SHA-256", encoded);
+            return toHex(digest);
+        };
+
+        const buildOverlay = () => {
+            const overlay = document.createElement("div");
+            overlay.className = "auth-overlay";
+            overlay.innerHTML = `
+                <form class="auth-card" autocomplete="off">
+                    <h2>Beveiligde rapportsite</h2>
+                    <p>Log in om de maandrapporten te openen.</p>
+                    <div class="auth-row">
+                        <label for="auth-user">Login</label>
+                        <input id="auth-user" name="username" type="text" required />
+                    </div>
+                    <div class="auth-row">
+                        <label for="auth-pass">Paswoord</label>
+                        <input id="auth-pass" name="password" type="password" required />
+                    </div>
+                    <button class="auth-btn" type="submit">Inloggen</button>
+                    <div class="auth-error" aria-live="polite"></div>
+                </form>
+            `;
+
+            const form = overlay.querySelector("form");
+            const userInput = overlay.querySelector("#auth-user");
+            const passInput = overlay.querySelector("#auth-pass");
+            const errorBox = overlay.querySelector(".auth-error");
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                errorBox.textContent = "";
+
+                const value = `${userInput.value.trim()}:${passInput.value}`;
+                const actualHash = await sha256(value);
+                if (actualHash === EXPECTED_HASH) {
+                    sessionStorage.setItem(KEY, "1");
+                    document.documentElement.classList.remove("auth-locked");
+                    overlay.remove();
+                    return;
+                }
+
+                errorBox.textContent = "Onjuiste login of paswoord.";
+                passInput.value = "";
+                passInput.focus();
+            });
+
+            document.documentElement.classList.add("auth-locked");
+            document.body.appendChild(overlay);
+            userInput.focus();
+        };
+
+        const start = () => {
+            if (!window.crypto || !window.crypto.subtle) {
+                return;
+            }
+            addStyles();
+            buildOverlay();
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", start, { once: true });
+        } else {
+            start();
+        }
+    })();
+    </script>
+    </head>
 <body>
 <div class="page">
   <header>
