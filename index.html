@@ -354,7 +354,7 @@
                 event.preventDefault();
                 errorBox.textContent = "";
 
-                const value = `${userInput.value.trim()}:${passInput.value}`;
+                const value = `${userInput.value.trim()}:${passInput.value.trim()}`;
                 const actualHash = await sha256(value);
                 if (actualHash === EXPECTED_HASH) {
                     sessionStorage.setItem(KEY, "1");
