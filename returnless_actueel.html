@@ -2,9 +2,27 @@
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Returnless - actuele dossierstand</title>
-<style>body{font-family:Arial,sans-serif;margin:24px;color:#25354a}
-table{border-collapse:collapse}td,th{padding:10px;border:1px solid #ddd}
-th{background:#eaf4f0}.table{overflow-x:auto}</style>
+<style>
+:root{color-scheme:light;--ink:#172b42;--muted:#63758a;--green:#087f65;--line:#e3eaf0}
+*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--green)}header{background:linear-gradient(120deg,#14263d,#20465a);color:white;padding:36px max(24px,calc((100% - 1240px)/2)) 60px}
+header a{color:#bcf3e1;text-decoration:none}.eyebrow{margin:20px 0 4px;color:#bcf3e1;letter-spacing:2px;font-size:12px;font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.2;margin:8px 0 12px}header p{margin:6px 0;color:#d1e0eb}
+main{max-width:1288px;margin:-28px auto 40px;padding:0 24px}.toolbar,.panel,.kpi{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 16px #14263d05}
+.toolbar{padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.toolbar p{margin:0;color:var(--muted);font-size:13px}select{font:inherit;color:var(--ink);padding:8px 36px 8px 12px;background:#f8fafc;border:1px solid #cbd7e2;border-radius:8px;margin-left:8px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}.kpi{padding:22px}.kpi span,.kpi small{display:block;color:var(--muted)}.kpi strong{display:block;font-size:34px;line-height:1.3;margin:8px 0;color:var(--green);font-variant-numeric:tabular-nums}
+.notice{border:1px solid #f1d69a;background:#fff8e8;border-radius:12px;padding:18px 22px;color:#73521a;margin:20px 0}.notice strong{display:block}.notice p{margin:4px 0 0}
+.panel{padding:24px;margin:20px 0}h2{margin:0;font-size:20px}.subtitle{color:var(--muted);margin:6px 0 20px;font-size:14px}
+.outcomes{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.outcome{background:#f7fafb;border:1px solid var(--line);border-radius:12px;padding:18px}.outcome h3{font-size:13px;font-weight:600;margin:0;min-height:42px}.outcome strong{font-size:28px;display:block}.outcome span{color:var(--muted);font-size:12px}
+.table{overflow-x:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-variant-numeric:tabular-nums}caption{text-align:left;color:var(--muted);font-size:12px;padding-bottom:12px}td,th{padding:14px 16px;border-bottom:1px solid var(--line);text-align:right}thead th{background:#f4f7fa;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}th:first-child{text-align:left}tbody th{font-weight:600}tbody tr:hover{background:#f8fbfc}
+.badge{display:inline-block;background:#fff3d6;color:#8a5a11;padding:4px 10px;border-radius:20px;font-size:12px}.registered{background:#e5f5ed;color:#087f65}.coverage{display:flex;align-items:center;justify-content:flex-end;gap:12px}progress{width:80px;height:7px;accent-color:var(--green)}.empty{text-align:center;color:var(--muted)}
+.help{display:grid;grid-template-columns:1fr 1fr;gap:24px}.help h3{font-size:15px;margin:0 0 8px}.help p{font-size:13px;color:var(--muted);margin:6px 0}footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}[hidden]{display:none!important}
+summary{cursor:pointer;font-weight:600;color:var(--green);padding:12px 0}details .subtitle{margin-bottom:12px}
+:focus-visible{outline:3px solid #30b99a;outline-offset:3px}
+@media(max-width:800px){.kpis,.outcomes{grid-template-columns:repeat(2,1fr)}.help{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}main{padding:0 16px}.panel{padding:18px}}
+@media(max-width:440px){.kpi{padding:16px}.kpi strong{font-size:28px}.outcomes{grid-template-columns:1fr}}
+</style>
     <script>
     (() => {
         const KEY = "zr_pages_auth_ok_v1";
@@ -170,15 +188,205 @@ th{background:#eaf4f0}.table{overflow-x:auto}</style>
     })();
     </script>
     </head>
-<body><h1>Returnless - actuele dossierstand</h1>
-<p>Laatste volledige synchronisatie: 2026-10-06T11:58:43.606526+00:00 (UTC).
-Aanmeldingen van 2025-01-01 tot en met 2026-10-06.</p>
-<p>Historische instroom opnieuw berekend volgens API 2025-01, inclusief aanvragen.
-Uitkomsten zijn de actuele tags van dossiers uit die aanmeldmaand.
-Dit zijn geen afhandelingen per maand. Ontbrekende tags betekenen niet automatisch openstaande dossiers.</p>
-<p>Oorspronkelijke Zendesk-maandrapporten worden niet automatisch herschreven.
-Lokale momentopnamen blijven bewaard. Meerdere uitkomsten tellen als een aparte groep.</p>
-<div class="table"><table><thead><tr>
-<th>Aanmeldmaand</th><th>Dossiers</th><th>Registratiegraad</th><th>Terugbetaald</th><th>Hersteld onder waarborg</th><th>Herstelling buiten waarborg</th><th>Vervangen</th><th>Onhersteld retour</th><th>Recyclage</th><th>Retour geweigerd</th><th>Meerdere uitkomsten</th><th>Uitkomst nog niet geregistreerd</th>
-</tr></thead><tbody><tr><td>2026-10</td><td>27</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>27</td></tr><tr><td>2026-09</td><td>167</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>167</td></tr><tr><td>2026-08</td><td>139</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>139</td></tr><tr><td>2026-07</td><td>156</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>156</td></tr><tr><td>2026-06</td><td>172</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>172</td></tr><tr><td>2026-05</td><td>150</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>150</td></tr><tr><td>2026-04</td><td>127</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>127</td></tr><tr><td>2026-03</td><td>191</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>191</td></tr><tr><td>2026-02</td><td>153</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>153</td></tr><tr><td>2026-01</td><td>143</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>143</td></tr><tr><td>2025-12</td><td>165</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>165</td></tr><tr><td>2025-11</td><td>120</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>120</td></tr><tr><td>2025-10</td><td>151</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>151</td></tr><tr><td>2025-09</td><td>183</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>183</td></tr><tr><td>2025-08</td><td>143</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>143</td></tr><tr><td>2025-07</td><td>160</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>160</td></tr><tr><td>2025-06</td><td>202</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>202</td></tr><tr><td>2025-05</td><td>169</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>169</td></tr><tr><td>2025-04</td><td>175</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>175</td></tr><tr><td>2025-03</td><td>186</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>186</td></tr><tr><td>2025-02</td><td>155</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>155</td></tr><tr><td>2025-01</td><td>222</td><td>0.0%</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>222</td></tr></tbody></table></div>
-<p><a href="index.html">Terug naar maandrapporten</a></p></body></html>
+<body><header><a href="index.html">Terug naar maandrapporten</a>
+<p class="eyebrow">Klium &middot; Returnless</p><h1>Actuele dossierstand</h1>
+<p>De instroom van toen, met de geregistreerde uitkomsten van nu.</p>
+<p>Gecontroleerde aanmeldingen: 01/01/2025 &ndash; 06/10/2026</p></header>
+<main><div class="toolbar"><div><strong>Historisch overzicht</strong>
+<p>Laatste volledige synchronisatie: <time datetime="2026-10-06T11:58:43.606526+00:00">06/10/2026 om 11:58 UTC</time></p></div>
+<div id="filter" hidden><label for="year">Aanmeldjaar</label><select id="year">
+<option value="all">Alle jaren</option><option value="2026">2026</option><option value="2025">2025</option>
+</select></div></div>
+<div class="kpis" aria-live="polite">
+<article class="kpi"><span>Returnless-aanmeldingen</span><strong id="total">3.456</strong><small>Inclusief aanvragen en retourdossiers</small></article>
+<article class="kpi"><span>Met geregistreerde uitkomst</span><strong id="registered">0</strong><small>Dossiers met minstens een uitkomst-tag</small></article>
+<article class="kpi"><span>Uitkomst ontbreekt</span><strong id="missing">3.456</strong><small>Niet automatisch openstaande dossiers</small></article>
+<article class="kpi"><span>Registratiegraad</span><strong id="coverage">0,0%</strong><small>Aandeel dossiers met uitkomst-tag</small></article>
+</div>
+<aside class="notice" id="notice" >
+<strong>Uitkomsten nog niet beschikbaar</strong><p id="notice-text">Er zijn nog geen uitkomst-tags geregistreerd. De aanmeldingen zijn wel opgehaald; de verdeling in terugbetalingen, herstellingen en andere uitkomsten is nog niet bekend.</p></aside>
+<section class="panel"><h2>Geregistreerde uitkomsten</h2>
+<p class="subtitle">Alleen vastgelegde uitkomst-tags tellen mee. Een streep betekent: geen registratie beschikbaar, niet nul herstellingen of terugbetalingen.</p>
+<div class="outcomes"><article class="outcome">
+<h3>Terugbetaald</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Hersteld onder waarborg</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Herstelling buiten waarborg</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Vervangen</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Onhersteld retour</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Recyclage</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Retour geweigerd</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article><article class="outcome">
+<h3>Meerdere uitkomsten</h3><strong data-outcome>&mdash;</strong>
+<span data-outcome-note>Nog geen registratie</span>
+</article></div>
+<p class="subtitle">Elk dossier telt eenmaal. Dossiers met verschillende uitkomst-tags staan onder &ldquo;Meerdere uitkomsten&rdquo;.</p></section>
+<section class="panel"><h2>Per oorspronkelijke aanmeldmaand</h2>
+<p class="subtitle">Een later toegevoegde uitkomst blijft bij de maand waarin het dossier werd aangemeld.</p>
+<div class="table"><table><caption>Dit zijn geen afhandelingen per maand. Een ontbrekende uitkomst is onbekend, niet noodzakelijk onafgehandeld.</caption>
+<thead><tr><th scope="col">Aanmeldmaand</th><th scope="col">Dossiers</th><th scope="col">Uitkomstregistratie</th><th scope="col">Uitkomst ontbreekt</th><th scope="col">Registratiegraad</th></tr></thead>
+<tbody><tr data-year="2026">
+<th scope="row"><time datetime="2026-10">Oktober 2026</time></th>
+<td>27</td><td><span class="badge">Nog niet geregistreerd</span></td><td>27</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Oktober 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-09">September 2026</time></th>
+<td>167</td><td><span class="badge">Nog niet geregistreerd</span></td><td>167</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad September 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-08">Augustus 2026</time></th>
+<td>139</td><td><span class="badge">Nog niet geregistreerd</span></td><td>139</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Augustus 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-07">Juli 2026</time></th>
+<td>156</td><td><span class="badge">Nog niet geregistreerd</span></td><td>156</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Juli 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-06">Juni 2026</time></th>
+<td>172</td><td><span class="badge">Nog niet geregistreerd</span></td><td>172</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Juni 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-05">Mei 2026</time></th>
+<td>150</td><td><span class="badge">Nog niet geregistreerd</span></td><td>150</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Mei 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-04">April 2026</time></th>
+<td>127</td><td><span class="badge">Nog niet geregistreerd</span></td><td>127</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad April 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-03">Maart 2026</time></th>
+<td>191</td><td><span class="badge">Nog niet geregistreerd</span></td><td>191</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Maart 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-02">Februari 2026</time></th>
+<td>153</td><td><span class="badge">Nog niet geregistreerd</span></td><td>153</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Februari 2026"></progress>
+</div></td></tr><tr data-year="2026">
+<th scope="row"><time datetime="2026-01">Januari 2026</time></th>
+<td>143</td><td><span class="badge">Nog niet geregistreerd</span></td><td>143</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Januari 2026"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-12">December 2025</time></th>
+<td>165</td><td><span class="badge">Nog niet geregistreerd</span></td><td>165</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad December 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-11">November 2025</time></th>
+<td>120</td><td><span class="badge">Nog niet geregistreerd</span></td><td>120</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad November 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-10">Oktober 2025</time></th>
+<td>151</td><td><span class="badge">Nog niet geregistreerd</span></td><td>151</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Oktober 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-09">September 2025</time></th>
+<td>183</td><td><span class="badge">Nog niet geregistreerd</span></td><td>183</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad September 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-08">Augustus 2025</time></th>
+<td>143</td><td><span class="badge">Nog niet geregistreerd</span></td><td>143</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Augustus 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-07">Juli 2025</time></th>
+<td>160</td><td><span class="badge">Nog niet geregistreerd</span></td><td>160</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Juli 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-06">Juni 2025</time></th>
+<td>202</td><td><span class="badge">Nog niet geregistreerd</span></td><td>202</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Juni 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-05">Mei 2025</time></th>
+<td>169</td><td><span class="badge">Nog niet geregistreerd</span></td><td>169</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Mei 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-04">April 2025</time></th>
+<td>175</td><td><span class="badge">Nog niet geregistreerd</span></td><td>175</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad April 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-03">Maart 2025</time></th>
+<td>186</td><td><span class="badge">Nog niet geregistreerd</span></td><td>186</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Maart 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-02">Februari 2025</time></th>
+<td>155</td><td><span class="badge">Nog niet geregistreerd</span></td><td>155</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Februari 2025"></progress>
+</div></td></tr><tr data-year="2025">
+<th scope="row"><time datetime="2025-01">Januari 2025</time></th>
+<td>222</td><td><span class="badge">Nog niet geregistreerd</span></td><td>222</td>
+<td><div class="coverage"><span>0,0%</span>
+<progress max="100" value="0.0" aria-label="Registratiegraad Januari 2025"></progress>
+</div></td></tr></tbody></table></div>
+<details id="outcome-detail" hidden>
+<summary>Uitkomsten per aanmeldmaand bekijken</summary>
+<p class="subtitle">Alleen geregistreerde uitkomsten. Maanden zonder registratie tonen een streep; niet-getagde dossiers zijn niet ingedeeld.</p>
+<div class="table"><table><thead><tr><th scope="col">Aanmeldmaand</th>
+<th scope="col">Terugbetaald</th><th scope="col">Hersteld onder waarborg</th><th scope="col">Herstelling buiten waarborg</th><th scope="col">Vervangen</th><th scope="col">Onhersteld retour</th><th scope="col">Recyclage</th><th scope="col">Retour geweigerd</th><th scope="col">Meerdere uitkomsten</th>
+</tr></thead><tbody><tr data-year="2026"><th scope="row">Oktober 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">September 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Augustus 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Juli 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Juni 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Mei 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">April 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Maart 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Februari 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2026"><th scope="row">Januari 2026</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">December 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">November 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Oktober 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">September 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Augustus 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Juli 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Juni 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Mei 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">April 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Maart 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Februari 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr><tr data-year="2025"><th scope="row">Januari 2025</th><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr></tbody></table></div></details></section>
+<section class="panel help"><div><h3>Waarom staan er nog geen uitkomsten?</h3>
+<p>Tags aanmaken in Returnless is niet hetzelfde als ze aan dossiers koppelen. Voeg de afgesproken uitkomst-tag toe zodra de uitkomst vaststaat. De volgende rapport-run neemt die registratie mee.</p>
+<p>De status Repair of een defectreden bewijst geen uitgevoerde herstelling en wordt daarom niet als uitkomst geteld.</p></div>
+<div><h3>Wat blijft historisch bewaard?</h3><p>De actuele stand volgt de laatste volledige controle via API 2025-01, inclusief aanvragen en zonder testrecords. Oorspronkelijke Zendesk-maandrapporten worden niet automatisch herschreven; lokale momentopnamen blijven bewaard.</p>
+<p>Registratiegraad is geen retourpercentage tegenover verkopen.</p></div></section>
+<footer>Returnless &middot; Actuele uitkomsten per aanmeldmaand &middot; Klium</footer></main>
+<script>
+(() => {
+  const periods = {"all": {"total": 3456, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [0, 0, 0, 0, 0, 0, 0, 0, 3456], "outcomes_registered": 0, "outcomes_repaired": 0, "outcomes_multiple": 0, "outcomes_coverage": 0.0}, "2026": {"total": 1425, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [0, 0, 0, 0, 0, 0, 0, 0, 1425], "outcomes_registered": 0, "outcomes_repaired": 0, "outcomes_multiple": 0, "outcomes_coverage": 0.0}, "2025": {"total": 2031, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [0, 0, 0, 0, 0, 0, 0, 0, 2031], "outcomes_registered": 0, "outcomes_repaired": 0, "outcomes_multiple": 0, "outcomes_coverage": 0.0}};
+  const format = new Intl.NumberFormat('nl-BE');
+  const percent = new Intl.NumberFormat('nl-BE', {minimumFractionDigits:1, maximumFractionDigits:1});
+  const year = document.getElementById('year');
+  document.getElementById('filter').hidden = false;
+  year.addEventListener('change', () => {
+    const data = periods[year.value];
+    document.getElementById('total').textContent = format.format(data.total);
+    document.getElementById('registered').textContent = format.format(data.outcomes_registered);
+    document.getElementById('missing').textContent = format.format(data.total - data.outcomes_registered);
+    document.getElementById('coverage').textContent = percent.format(data.outcomes_coverage) + '%';
+    document.getElementById('notice').hidden = data.outcomes_registered > 0;
+    document.getElementById('outcome-detail').hidden = data.outcomes_registered === 0;
+    document.getElementById('notice-text').textContent = data.total
+      ? 'Er zijn nog geen uitkomst-tags geregistreerd voor deze selectie. De aanmeldingen zijn wel opgehaald; de uitkomsten zijn nog niet bekend.'
+      : 'Er zijn geen aanmeldingen in deze controleperiode.';
+    document.querySelectorAll('[data-outcome]').forEach((element, index) => {
+      element.textContent = data.outcomes_registered ? format.format(data.outcomes_data[index]) : '\u2014';
+    });
+    document.querySelectorAll('[data-outcome-note]').forEach(element => {
+      element.textContent = data.outcomes_registered ? 'Geregistreerde dossiers' : 'Nog geen registratie';
+    });
+    document.querySelectorAll('tr[data-year]').forEach(row => {
+      row.hidden = year.value !== 'all' && row.dataset.year !== year.value;
+    });
+  });
+})();
+</script></body></html>
