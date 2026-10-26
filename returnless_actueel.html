@@ -193,14 +193,14 @@ summary{cursor:pointer;font-weight:600;color:var(--green);padding:12px 0}details
 <p>De instroom van toen, met de geregistreerde uitkomsten van nu.</p>
 <p>Gecontroleerde aanmeldingen: 01/01/2025 &ndash; 26/10/2026</p></header>
 <main><div class="toolbar"><div><strong>Historisch overzicht</strong>
-<p>Laatste volledige synchronisatie: <time datetime="2026-10-26T09:56:30.999919+00:00">26/10/2026 om 09:56 UTC</time></p></div>
+<p>Laatste volledige synchronisatie: <time datetime="2026-10-26T10:36:07.799570+00:00">26/10/2026 om 10:36 UTC</time></p></div>
 <div id="filter" hidden><label for="year">Aanmeldjaar</label><select id="year">
 <option value="all">Alle jaren</option><option value="2026">2026</option><option value="2025">2025</option>
 </select></div></div>
 <div class="kpis" aria-live="polite">
-<article class="kpi"><span>Returnless-aanmeldingen</span><strong id="total">3.547</strong><small>Inclusief aanvragen en retourdossiers</small></article>
+<article class="kpi"><span>Returnless-aanmeldingen</span><strong id="total">3.548</strong><small>Inclusief aanvragen en retourdossiers</small></article>
 <article class="kpi"><span>Met geregistreerde uitkomst</span><strong id="registered">324</strong><small>Dossiers met minstens een uitkomst-tag</small></article>
-<article class="kpi"><span>Uitkomst ontbreekt</span><strong id="missing">3.223</strong><small>Niet automatisch openstaande dossiers</small></article>
+<article class="kpi"><span>Uitkomst ontbreekt</span><strong id="missing">3.224</strong><small>Niet automatisch openstaande dossiers</small></article>
 <article class="kpi"><span>Registratiegraad</span><strong id="coverage">9,1%</strong><small>Aandeel dossiers met uitkomst-tag</small></article>
 </div>
 <aside class="notice" id="notice" hidden>
@@ -242,9 +242,9 @@ summary{cursor:pointer;font-weight:600;color:var(--green);padding:12px 0}details
 <thead><tr><th scope="col">Aanmeldmaand</th><th scope="col">Dossiers</th><th scope="col">Uitkomstregistratie</th><th scope="col">Uitkomst ontbreekt</th><th scope="col">Registratiegraad</th></tr></thead>
 <tbody><tr data-year="2026">
 <th scope="row"><time datetime="2026-10">Oktober 2026</time></th>
-<td>118</td><td><span class="badge registered">64 met uitkomst</span></td><td>54</td>
-<td><div class="coverage"><span>54,2%</span>
-<progress max="100" value="54.2" aria-label="Registratiegraad Oktober 2026"></progress>
+<td>119</td><td><span class="badge registered">64 met uitkomst</span></td><td>55</td>
+<td><div class="coverage"><span>53,8%</span>
+<progress max="100" value="53.8" aria-label="Registratiegraad Oktober 2026"></progress>
 </div></td></tr><tr data-year="2026">
 <th scope="row"><time datetime="2026-09">September 2026</time></th>
 <td>167</td><td><span class="badge registered">136 met uitkomst</span></td><td>31</td>
@@ -365,7 +365,7 @@ summary{cursor:pointer;font-weight:600;color:var(--green);padding:12px 0}details
 <footer>Returnless &middot; Actuele uitkomsten per aanmeldmaand &middot; Klium</footer></main>
 <script>
 (() => {
-  const periods = {"all": {"total": 3547, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Manuele Opdracht", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [245, 42, 4, 23, 1, 0, 1, 8, 0, 3223], "outcomes_registered": 324, "outcomes_repaired": 46, "outcomes_multiple": 0, "outcomes_coverage": 9.1, "profile_labels": ["Terugbetaald", "Hersteld", "Vervangen", "Overige uitkomsten", "Gemengde uitkomsten"], "profile_data": [245, 46, 23, 10, 0]}, "2026": {"total": 1516, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Manuele Opdracht", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [245, 41, 4, 23, 1, 0, 1, 8, 0, 1193], "outcomes_registered": 323, "outcomes_repaired": 45, "outcomes_multiple": 0, "outcomes_coverage": 21.3, "profile_labels": ["Terugbetaald", "Hersteld", "Vervangen", "Overige uitkomsten", "Gemengde uitkomsten"], "profile_data": [245, 45, 23, 10, 0]}, "2025": {"total": 2031, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Manuele Opdracht", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [0, 1, 0, 0, 0, 0, 0, 0, 0, 2030], "outcomes_registered": 1, "outcomes_repaired": 1, "outcomes_multiple": 0, "outcomes_coverage": 0.0, "profile_labels": ["Terugbetaald", "Hersteld", "Vervangen", "Overige uitkomsten", "Gemengde uitkomsten"], "profile_data": [0, 1, 0, 0, 0]}};
+  const periods = {"all": {"total": 3548, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Manuele Opdracht", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [245, 42, 4, 23, 1, 0, 1, 8, 0, 3224], "outcomes_registered": 324, "outcomes_repaired": 46, "outcomes_multiple": 0, "outcomes_coverage": 9.1, "profile_labels": ["Terugbetaald", "Hersteld", "Vervangen", "Overige uitkomsten", "Gemengde uitkomsten"], "profile_data": [245, 46, 23, 10, 0]}, "2026": {"total": 1517, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Manuele Opdracht", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [245, 41, 4, 23, 1, 0, 1, 8, 0, 1194], "outcomes_registered": 323, "outcomes_repaired": 45, "outcomes_multiple": 0, "outcomes_coverage": 21.3, "profile_labels": ["Terugbetaald", "Hersteld", "Vervangen", "Overige uitkomsten", "Gemengde uitkomsten"], "profile_data": [245, 45, 23, 10, 0]}, "2025": {"total": 2031, "outcomes_labels": ["Terugbetaald", "Hersteld onder waarborg", "Herstelling buiten waarborg", "Vervangen", "Onhersteld retour", "Recyclage", "Retour geweigerd", "Manuele Opdracht", "Meerdere uitkomsten", "Uitkomst nog niet geregistreerd"], "outcomes_data": [0, 1, 0, 0, 0, 0, 0, 0, 0, 2030], "outcomes_registered": 1, "outcomes_repaired": 1, "outcomes_multiple": 0, "outcomes_coverage": 0.0, "profile_labels": ["Terugbetaald", "Hersteld", "Vervangen", "Overige uitkomsten", "Gemengde uitkomsten"], "profile_data": [0, 1, 0, 0, 0]}};
   const format = new Intl.NumberFormat('nl-BE');
   const percent = new Intl.NumberFormat('nl-BE', {minimumFractionDigits:1, maximumFractionDigits:1});
   const year = document.getElementById('year');
